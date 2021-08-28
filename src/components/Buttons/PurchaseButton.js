@@ -6,8 +6,14 @@ export default function PurchaseButton(props) {
   const { title, subtitle } = props
   return (
     <Wrapper>
-      <Title>{title || "Get Pro Access"}</Title>
-      <Subtitle>{subtitle || "$19 per month"}</Subtitle>
+      <IconWrapper>
+        <Icon src="/images/icons/credit.svg" />
+        <Ring src="/images/icons/icon-ring.svg" />
+      </IconWrapper>
+      <TextWrapper>
+        <Title>{title || "Get Pro Access"}</Title>
+        <Subtitle>{subtitle || "$19 per month"}</Subtitle>
+      </TextWrapper>
     </Wrapper>
   )
 }
@@ -22,13 +28,41 @@ const Wrapper = styled.div`
     inset 0px 0px 0px 0.5px rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   border: 0px;
+  display: grid;
+  grid-template-columns: 53px auto;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
 `
 
 const Title = styled(Caption2)`
-	color: black;
+  color: black;
 `
 
 const Subtitle = styled(SmallText)`
   color: black;
   opacity: 0.7;
+`
+const IconWrapper = styled.div`
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(200.44deg, #4316db 13.57%, #9076e7 98.38%);
+  border-radius: 50%;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+`
+const Icon = styled.img`
+  width: 29px;
+  height: 29px;
+`
+const TextWrapper = styled.div`
+  display: grid;
+  gap: 4px;
+`
+const Ring = styled.img`
+  position: absolute;
+  top: -15px;
+  left: -16px;
 `
