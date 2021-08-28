@@ -7,7 +7,7 @@ export default function PurchaseButton(props) {
   return (
     <Wrapper>
       <IconWrapper>
-        <Icon src="/images/icons/credit.svg" />
+        <Icon src="/images/icons/credit.svg" className="icon" />
         <Ring src="/images/icons/icon-ring.svg" />
       </IconWrapper>
       <TextWrapper>
@@ -33,6 +33,22 @@ const Wrapper = styled.div`
   justify-content: start;
   align-items: center;
   gap: 20px;
+
+  *,
+  & {
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  :hover {
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1),
+      0px 30px 60px rgba(23, 0, 102, 0.5),
+      inset 0px 0px 0px 0.5px rgba(255, 255, 255, 0.5);
+    transform: translateY(-3px);
+
+    .icon {
+      transform: scale(1.2);
+    }
+  }
 `
 
 const Title = styled(Caption2)`
@@ -52,6 +68,10 @@ const IconWrapper = styled.div`
   justify-content: center;
   align-content: center;
   position: relative;
+
+  ${Wrapper}:hover & {
+    filter: hue-rotate(10deg);
+  }
 `
 const Icon = styled.img`
   width: 29px;
@@ -65,4 +85,8 @@ const Ring = styled.img`
   position: absolute;
   top: -15px;
   left: -16px;
+
+  ${Wrapper}:hover & {
+    transform: rotate(30deg) scale(1.2) translate(1px, 1px);
+  }
 `
