@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import { menuData } from "../../data/menuData"
+import MenuButton from "../Buttons/MenuButton"
 
 export default function Header() {
   return (
@@ -9,14 +10,9 @@ export default function Header() {
       <Link to="/">
         <img src="images/logos/logo.svg" />
       </Link>
-      <MenuWrapper>
-        {menuData.map((item, key) => (
-          <Link to={item.link}>
-            <MenuItem>
-              <img src={item.icon} alt={item.title} />
-              {item.title}
-            </MenuItem>
-          </Link>
+      <MenuWrapper count={menuData.length}>
+        {menuData.map((item, index) => (
+          <MenuButton item={item} key={index} />
         ))}
       </MenuWrapper>
     </Wrapper>
@@ -37,14 +33,14 @@ const Wrapper = styled.div`
 const MenuWrapper = styled.div`
   display: grid;
   gap: 30px;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: repeat(${(props) => props.count}, auto);
 `
 
 const MenuItem = styled.div`
   color: rgba(255, 255, 255, 0.7);
   display: grid;
   grid-template-columns: 24px auto;
-  gap: 10px;
+  gap: ${(props) => props.title && "10px"};
   align-items: center;
   padding: 10px;
   transition: 0.5s ease-out;
