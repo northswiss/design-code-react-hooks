@@ -5,7 +5,10 @@ import styled from "styled-components"
 export default function MenuButton(props, index) {
   const { item } = props
   return (
-    <Link to={item.link} key={index}>
+    /* When working with custom components, you have to be careful with onClick 
+      events and ensure that the event is passed down to the component. 
+      Try to remove it from Link and you will see it will no longer work */
+    <Link to={item.link} onClick={props.onClick}>
       <MenuItem title={item.title}>
         <img src={item.icon} alt={item.title} />
         {item.title}
@@ -30,4 +33,3 @@ const MenuItem = styled.div`
       inset 0px 0px 0px 0.5px rgba(255, 255, 255, 0.2);
   }
 `
-
