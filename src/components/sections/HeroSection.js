@@ -1,7 +1,6 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
 import { H1, MediumText } from "../styles/TextStyles"
-import { themes } from "../styles/ColorStyles"
 import PurchaseButton from "../Buttons/PurchaseButton"
 import { Link } from "gatsby"
 import MockupAnimation from "../animations/MockupAnimation"
@@ -19,7 +18,7 @@ function HeroSection() {
           </Title>
           <Description>
             Don’t skip design. Learn design and code, by building real apps with
-            React and Swift. Complete courses about the best tools.
+            <span>React</span> and Swift. Complete courses about the best tools.
           </Description>
           <Link to="/page-2">
             <PurchaseButton
@@ -51,6 +50,12 @@ const ContentWrapper = styled.div`
   padding: 200px 30px;
   display: grid;
   grid-template-columns: 360px auto;
+
+  @media (max-width: 450px) {
+    grid-template-columns: auto;
+    padding: 150px 20px 250px;
+    gap: 60px;
+  }
 `
 
 const TextWrapper = styled.div`
@@ -75,7 +80,21 @@ const TextWrapper = styled.div`
 `
 
 const Title = styled(H1)`
-  color: ${themes.dark.text1};
+  background: linear-gradient(180deg, #730040 0%, #301cbe 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  span {
+    background: linear-gradient(180deg, #ffd7ff 0%, #ffb6ff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  @media (max-width: 450px) {
+    font-size: 48px;
+  }
 `
 
 const Description = styled(MediumText)``
